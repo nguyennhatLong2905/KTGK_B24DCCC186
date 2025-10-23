@@ -17,11 +17,15 @@ const PostCard: React.FC<PostCardProps> = ({ post, onDelete }) => {
   return (
     <div className="post-card">
       <img src={post.thumbnail} alt={post.title} />
-      <h3>{post.title}</h3>
-      <p>by {post.author} | {post.date}</p>
-      <p>{post.description}</p>
-      <Link to={`/posts/${post.id}`}>Đọc thêm</Link>
-      <button onClick={() => onDelete(post.id)}>Xóa</button>
+      <div className="card-body">
+        <h3>{post.title}</h3>
+        <p>by {post.author} | {post.date}</p>
+        <p>{post.description}</p>
+        <div className="actions">
+          <Link to={`/posts/${post.id}`}>Đọc thêm</Link>
+          <button onClick={() => onDelete(post.id)}>Xóa</button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -29,13 +29,13 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Tiêu đề" required minLength={10} />
       <input type="text" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Tác giả" required minLength={3} />
       <input type="text" value={thumbnail} onChange={e => setThumbnail(e.target.value)} placeholder="URL ảnh thumbnail" />
       <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Nội dung bài viết" required minLength={50}></textarea>
       <select value={category} onChange={e => setCategory(e.target.value)}>
-        {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+        {categories.map((cat) => <option key={cat} value={cat}>{cat}</option>)}
       </select>
       <button type="submit">Đăng bài</button>
       <button type="button" onClick={() => navigate('/')}>Hủy</button>
