@@ -1,29 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import type { Post } from "../types/Post";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface PostCardProps {
-  post: Post;
-  onDelete: (id: number) => void;
+  post: {
+    id: string;
+    title: string;
+    author: string;
+    date: string;
+    thumbnail: string;
+    description: string;
+  };
+  onDelete: (id: string) => void;
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post, onDelete }) => {
   return (
-    <div className="card">
-      <img src={post.thumbnail} alt={post.title} className="thumb" />
+    <div className="post-card">
+      <img src={post.thumbnail} alt={post.title} />
       <h3>{post.title}</h3>
-      <p className="meta">
-        {post.author} • {post.date}
-      </p>
-      <p>{post.content.substring(0, 100)}...</p>
-      <div className="actions">
-        <Link to={`/posts/${post.id}`} className="btn">
-          Đọc thêm
-        </Link>
-        <button onClick={() => onDelete(post.id)} className="btn danger">
-          Xóa
-        </button>
-      </div>
+      <p>by {post.author} | {post.date}</p>
+      <p>{post.description}</p>
+      <Link to={`/posts/${post.id}`}>Đọc thêm</Link>
+      <button onClick={() => onDelete(post.id)}>Xóa</button>
     </div>
   );
 };
